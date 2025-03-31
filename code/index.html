@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>bad game</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script src="constants.js"></script>
+    <script src="constructors.js"></script>
+    <script src="functions.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+  </body>
+</html>
+
+<!--
+To-Do List: (mostly in order)
+IDEAS
+- figure out what the remaining cards do
+  - ice castle
+  - underwater ruin
+  - tempest ward (maybe change the name because the image is more of a shield)
+  - support chinook
+  - healing spring
+  - reflourish
+  - ancient temple
+
+ALSO FOR ART MAKE:
+- symbols in the middle of the selection screen things (to put beside the player to show which element they chose)
+- popup boxes (all 4, 3 errors, confirm end turn if did nothing)
+- draw and discard guis (maybe they are also called popups?)
+
+VISUALS
+- drawing the selection screen
+- add event listener for clicks and mouse movements
+- gamestate: selection
+- make it so that you can actually select a deck
+
+- drawing the actual game
+- drawing the placed cards and hand cards
+  - MAYBE: make something to show how much mana a card costs without having to read the hover description
+- drawing player, mana, and enemy text
+- gamestate: playing
+- add event listener for using cards and checking discard pile
+- make the mana bar change
+- end turn button
+- enemy ai (shouldn't be too hard)
+- drawing cards into your hand
+- gaining # mana per turn (haven't decided, probably like 2 or 3 or something)
+- hovering over the deck makes the background slightly lighter
+- hovering over hand cards descriptions
+- hovering over tower cards descriptions
+- hovering over deck cards descriptions
+
+- pop ups when you can't use a card or whatever
+- gamestate: popup
+- possibly confirm popups whenever you use a card (if not this, then make one for when you are ending your turn without doing anything)
+
+- animations for whenver a tower gets damaged, dies, gets more defense, or gets healed
+- gamestate: animation
+
+PROGESSION
+- add two more enemies before you get to the final boss
+  - you need lots of ideas to do this
+- make it so whenever you defeat an enemy your deck gets upgraded (more cards and better cards)
+
+SOUND DESIGN
+- possibly add sound effects for whenever a tower dies, gets damaged, gets more defense, or gets healed
+- even bigger maybe: add sound effects for whenever you use a card
+  - even even bigger maybe: special sound effects depending on the card
+
+LORE
+- text/dialogue when the boss dies
+- end screen
+- play again button
+-->
+
+<!--
+Things I need to add: (sidebar because i use 1/4, 3/4 html js view)
+- actual canvas rendering (framerate and constant drawing)
+- card drawing system
+- visuals for sprites
+  - hovering over cards and towers for descriptions
+  - hovering over draw and discard pile to see the cards
+- the difference between magic and physical damage
+- card usage and other click detection things
+- selecting lanes
+- card usage
+- before-game element selection
+- between-game reset
+- popups when using cards
+  - check retry function for errors
+  - confirmation
+- card use popup or whatever saying "<enemy name> used fireball!"
+- the ai smh
+
+even more possible ideas:
+- animations
+  - effect/usage animations (red flash for damage, etc.)
+  - fly in as well as fade in animations going in and out of game
+- sound design when using or selecting things
+-->
