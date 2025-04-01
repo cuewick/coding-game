@@ -147,34 +147,34 @@ class Card {
         this.use = () => {
           switch(this.name) {
             case "Wizard Tower":
-              new Tower(); // use location to tell where
+              new Tower('Wizard Tower', 50, 50, 0, 0, 0, 0, 'damage', 10, 'same', 'm', undefined, undefined, undefined, undefined, 'damage', 10, 'all', 'm', 'player', false); // use location to tell where
               break;
             case "Volcano":
-              new Tower();
+              new Tower('Volcano', 100, 100, 0, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'damage', 30, 'all', 'p', 'player', false);
               break;
             case "Ice Castle":
-              new Tower();
+              new Tower('Ice Castle', 100, 100, 0, 0, 0, 0, 'damage', 10, 'same', 'm', undefined, undefined, undefined, undefined, 'damage', 10, 'all', 'm', 'player', false);
               break;
             case "Underwater Ruin":
-              new Tower();
+              new Tower('Underwater Ruin', 50, 50, 0, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'damage', 30, 'same', 'p', 'player', false);
               break;
             case "Cloud":
-              new Tower();
+              new Tower('Cloud', 50, 50, 50, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, 'player', false); // the null is to show that it exists but not like this
               break;
             case "Windmill":
-              new Tower();
+              new Tower('Windmill', 50, 50, 0, 0, 0, 0, null, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'player', false);
               break;
             case "Archer Tower":
-              new Tower();
+              new Tower('Archer Tower', 50, 50, 0, 0, 0, 0, 'damage', 10, 'same', 'p', undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, 'player', false);
               break;
-            case "Stone Temple":
-              new Tower();
+            case "Ancient Temple":
+              new Tower('Ancient Temple', 50, 50, 0, 0, 0.2, 0, 'healing', 5, 'same', undefined, undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, 'player', false);
               break;
             case "The Mirror":
-              new Tower();
+              new Tower('The Mirror', 1, 1, 80, 0, 0, 0, undefined, undefined, undefined, undefined, 'damage', 5, 'all', 't', undefined, undefined, undefined, undefined, 'enemy', false);
               break;
-            case "Prism of Eternity":
-              new Tower();
+            case "The Prism of Eternity":
+              new Tower('The Prism of Eternity', 'i dont know yet', 'idk', 0, 0, 0, 0, 'damage', 10+10, 'others', null, undefined, undefined, undefined, undefined, 'healing', '20%', 'others', undefined, 'enemy', false);
               break;
             default:
               break;
@@ -189,10 +189,14 @@ class Card {
                 mana -= this.cost;
                 affected = '';
                 for (let i of cLanes) {
-                  if ((elanes[i-1].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i-1].chance) || elanes[i-1].chance == 0) { // basically, if the tower has a chance of blocking and the tower does NOT block, or the tower just can't block: make it take damage
+                  if (elanes[i-1] != undefined) {
+                    if ((elanes[i-1].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i-1].chance) || elanes[i-1].chance == 0) { // basically, if the tower has a chance of blocking and the tower does NOT block, or the tower just can't block: make it take damage
                     elanes[i-1].hp -= (this.abone * (1 - elanes[i-1][this.abthree + 'def']));
                     affected += i;
                     elanes[i-1].hit();
+                    }
+                  } else {
+                    hit('enemy');
                   }
                 }
                 if (affected != '') {
@@ -220,18 +224,26 @@ class Card {
           	if (this.abtwo == 1) {
             	affected = '';
             	let i = Math.floor(Math.random() * 3);
-              if ((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) {
+              if (lanes[i] != undefined) {
+                if ((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) {
               	lanes[i].hp -= (this.abone * (1- lanes[i][this.abthree + 'def']));
                 affected += (i+1);
                 lanes[i].hit();
+                }
+              } else {
+                hit('player');
               }
             } else if (this.abtwo == 3) {
             	affected = '';
             	for (let i = 0; i < 3; i++) {
-              	if ((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) {
+                if (lanes[i] != undefined) {
+              	  if ((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) {
               		lanes[i].hp -= (this.abone * (1- lanes[i][this.abthree + 'def']));
                 	affected += (i+1);
                 	lanes[i].hit();
+                  }
+                } else {
+                  hit('player');
                 }
               }
             }
@@ -430,6 +442,8 @@ class Card {
               break;
             case 'Icicles':
               break;
+            case 'Tempest Ward':
+              break;
             case 'Prestidigitation':
               break;
             case 'Gaias Blessing':
@@ -478,7 +492,13 @@ class Tower {
 
     // add the things below when you are able to actually get cards working because like there are some enemy nuances in how i might decide to make them use cards because the ai just might be a lot simpler
     this.hit = () => {
-
+      switch (onhit) {
+        case "damage":
+          
+          break;
+        default:
+          break;
+      }
     }
     this.blocked = () => {
 

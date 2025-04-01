@@ -129,14 +129,37 @@ function startgame(elmnt) {
     edraw = [];
   }
   // set up player
-  php = 10;
+  php = 5;
   mana = 2;
   draw = [];
   discard = [];
   hand = [undefined, undefined, undefined];
   lanes = [undefined, undefined, undefined];
+  turn = 'player';
   switch (element) {
     case "fire":
+      new Card('damage', 'Fireball', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Fireball', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Fireball', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Fireball', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Flame Strike', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Flame Strike', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Flame Strike', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Flame Strike', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Solar Flare', 2, 'Rare', 10, 3, 'm', 'player', false);
+      new Card('damage', 'Solar Flare', 2, 'Rare', 10, 3, 'm', 'player', false);
+      new Card('damage', 'Firebolt', 4, 'Legendary', 30, 1, 't', 'player', false);
+      new Card('special', 'Fired Up', 2, 'Common', undefined, undefined, undefined, 'player', false); // literally none of the abone abtwo abthrees matter here
+      new Card('special', 'Fired Up', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('healing', 'Bonfire', 1, 'Common', 20, 1, undefined, 'player', false); // for healing abthree doesn't matter so i just put it as true
+      new Card('healing', 'Bonfire', 1, 'Common', 20, 1, undefined, 'player', false);
+      new Card('tactic', 'Combustion', 1, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Wizard Tower', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Wizard Tower', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Wizard Tower', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Volcano', 2, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Volcano', 2, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Volcano', 2, 'Rare', undefined, undefined, undefined, 'player', false);
       break;
     case "water":
       break;
@@ -154,15 +177,38 @@ function newgame() {
   // new game function when you kill an enemy
 }
 
+// might add an animation to the hp text if the enemy or the player gets hit
+// also you might have to change the hitting within the constructors to make it so that you can only hit once per turn or once per attack
+
+function hit(who) {
+  if (who == 'player') {
+    php -= 1;
+    if (php <= 0) {
+      lose();
+    }
+  } else if (who == 'enemy') {
+    if (enemy == 'The Chronomancer') {
+      if (elanes[0].name != "Time Altar" || elanes[1].name != "Time Altar" || elanes[2].name != "Time Altar") {
+        ehp -= 1;
+      }
+    }
+    if (ehp <= 0) {
+      win();
+    }
+  }
+}
+
+function win() {
+  console.log('player has won')
+  alert('you win')
+}
+
 function lose() {
-  // skill issue
+  console.log('player has lost')
+  alert('you lose, refresh the page to try again')
 }
 
 // pre-running
-
-// constructors
-
-new Card('damage', 'Fireball', 1, 'Common', 10, 1, 'm', 'player', false);
 
 // event listeners
 

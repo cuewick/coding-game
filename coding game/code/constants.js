@@ -6,12 +6,12 @@ const descriptions = {
     // ^^ actually i might not have to i forgot that "" is prioritized over '' so " ' " or something like that CAN exist
     Flame_Strike: "Deal 10 physical damage to one lane.",
     Solar_Flare: "Deal 10 magic damage to all lanes.",
-    Firebolt: "Deal 20 true damage to one lane.",
+    Firebolt: "Deal 30 true damage to one lane.",
     Fired_Up: "Give a tower 20% magic defense, but reduce its HP by 10. Does not stack.",
     Bonfire: "Increase a tower's HP by 20.",
     Combustion: "Temporarily remove this card and another card, but deal 20 magic damage to one lane.",
     Wizard_Tower: "Has 50 HP.\nOn Hit: Deal 10 magic damage to the same lane.\nOn Destroy: Deal 10 magic damage to all lanes.",
-    Volcano: "",
+    Volcano: "Has 100 HP\nOn Destroy: Deal 30 physical damage to all lanes.",
     // WATER CARDS
     Icicles: "Deal 10 physical damage to and stun one lane.",
     Tidal_Wave: "Deal 10 physical damage to all lanes",
@@ -20,8 +20,8 @@ const descriptions = {
     Water_Wall: "Give a tower 25% magic defense. Does not stack",
     Healing_Rain: "Increase all of your towers' HPs by 20.",
     Fish: "Move a card from your draw pile into your hand.",
-    Ice_Castle: "",
-    Underwater_Ruin: "",
+    Ice_Castle: "Has 100 HP\nOn Hit: Deal 10 magic damage to the same lane.\nOn Destroy: Deal 10 magic damage to all lanes.",
+    Underwater_Ruin: "Has 50 HP\nOn Destroy: Deal 30 physical damage to the same lane.",
     // AIR CARDS
     Galeforce: "Deal 10 magic damage to one lane.",
     Wind_Slice: "Deal 10 physical damage to one lane.",
@@ -38,11 +38,11 @@ const descriptions = {
     Earthquake: "Deal 20 physical damage to two lanes.",
     Overgrowth: "Give a tower 20% physical defense. Does not stack.",
     Gaias_Blessing: "Increase a tower's max HP by 20 and its HP by 30.", // might move this one more down as it is typically sorted by type and then rarity
-    Healing_Spring: "",
-    Reflourish: "",
+    Healing_Spring: "Increase two towers' HPs by 30.",
+    Reflourish: "Increase a tower's max HP by 10.",
     Foraging: "Gain 1 mana.",
-    Archer_Tower: "Has 50 HP.\nOn Hit: Deal 10 physical damage to the same lane.\nOn Destroy: Place a temporary Volley card in your draw pile.",
-    Ancient_Temple: "",
+    Archer_Tower: "Has 50 HP.\nOn Hit: Deal 10 physical damage to the same lane.\nOn Destroy: Add a temporary Volley card to your draw pile.",
+    Ancient_Temple: "Has 50 HP. 20% defense against magic damage.\nOn Hit: Heal 5 HP.\nOn Destroy: Gain 1 mana.",
     // BOSS TOWERS
     Time_Altar: "Has 100 HP. You must destroy every Time Altar before attacking The Chronomancer\nHas 20% defense against magic and physical damage.\nOn Hit: Heal 2 HP.\nIf a Time Altar reaches critical condition (less than 25 HP) for the first time, it will gain 20 HP.",
     The_Mirror: "Has 1 HP. 80% chance to block incoming attacks.\nOn Block: All of your towers take 5 damage.",
