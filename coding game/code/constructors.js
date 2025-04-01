@@ -145,39 +145,55 @@ class Card {
     switch(this.type) {
       case "tower":
         this.use = () => {
-          switch(this.name) {
-            case "Wizard Tower":
-              new Tower('Wizard Tower', 50, 50, 0, 0, 0, 0, 'damage', 10, 'same', 'm', undefined, undefined, undefined, undefined, 'damage', 10, 'all', 'm', 'player', false); // use location to tell where
-              break;
-            case "Volcano":
-              new Tower('Volcano', 100, 100, 0, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'damage', 30, 'all', 'p', 'player', false);
-              break;
-            case "Ice Castle":
-              new Tower('Ice Castle', 100, 100, 0, 0, 0, 0, 'damage', 10, 'same', 'm', undefined, undefined, undefined, undefined, 'damage', 10, 'all', 'm', 'player', false);
-              break;
-            case "Underwater Ruin":
-              new Tower('Underwater Ruin', 50, 50, 0, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'damage', 30, 'same', 'p', 'player', false);
-              break;
-            case "Cloud":
-              new Tower('Cloud', 50, 50, 50, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, 'player', false); // the null is to show that it exists but not like this
-              break;
-            case "Windmill":
-              new Tower('Windmill', 50, 50, 0, 0, 0, 0, null, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'player', false);
-              break;
-            case "Archer Tower":
-              new Tower('Archer Tower', 50, 50, 0, 0, 0, 0, 'damage', 10, 'same', 'p', undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, 'player', false);
-              break;
-            case "Ancient Temple":
-              new Tower('Ancient Temple', 50, 50, 0, 0, 0.2, 0, 'healing', 5, 'same', undefined, undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, 'player', false);
-              break;
-            case "The Mirror":
-              new Tower('The Mirror', 1, 1, 80, 0, 0, 0, undefined, undefined, undefined, undefined, 'damage', 5, 'all', 't', undefined, undefined, undefined, undefined, 'enemy', false);
-              break;
-            case "The Prism of Eternity":
-              new Tower('The Prism of Eternity', 'i dont know yet', 'idk', 0, 0, 0, 0, 'damage', 10+10, 'others', null, undefined, undefined, undefined, undefined, 'healing', '20%', 'others', undefined, 'enemy', false);
-              break;
-            default:
-              break;
+          if (cLanes.length == 1) {
+            switch(this.name) {
+              case "Wizard Tower":
+                new Tower('Wizard Tower', 50, 50, 0, 0, 0, 0, 'damage', 10, 'same', 'm', undefined, undefined, undefined, undefined, 'damage', 10, 'all', 'm', this.loc[0] + cLanes[0], false); // use location to tell where
+                break;
+              case "Volcano":
+                new Tower('Volcano', 100, 100, 0, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'damage', 30, 'all', 'p', this.loc[0] + cLanes[0], false);
+                break;
+              case "Ice Castle":
+                new Tower('Ice Castle', 100, 100, 0, 0, 0, 0, 'damage', 10, 'same', 'm', undefined, undefined, undefined, undefined, 'damage', 10, 'all', 'm', this.loc[0] + cLanes[0], false);
+                break;
+              case "Underwater Ruin":
+                new Tower('Underwater Ruin', 50, 50, 0, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'damage', 30, 'same', 'p', this.loc[0] + cLanes[0], false);
+                break;
+              case "Cloud":
+                new Tower('Cloud', 50, 50, 50, 0, 0, 0, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, this.loc[0] + cLanes[0], false); // the null is to show that it exists but not like this
+                break;
+              case "Windmill":
+                new Tower('Windmill', 50, 50, 0, 0, 0, 0, null, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, this.loc[0] + cLanes[0], false);
+                break;
+              case "Archer Tower":
+                new Tower('Archer Tower', 50, 50, 0, 0, 0, 0, 'damage', 10, 'same', 'p', undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, this.loc[0] + cLanes[0], false);
+                break;
+              case "Ancient Temple":
+                new Tower('Ancient Temple', 50, 50, 0, 0, 0.2, 0, 'healing', 5, 'same', undefined, undefined, undefined, undefined, undefined, null, undefined, undefined, undefined, this.loc[0] + cLanes[0], false);
+                break;
+              case "The Mirror":
+                if (elanes[0] == undefined || elanes[1] == undefined || elanes[2] == undefined) {
+                  for (let i = 0; i < 3; i++) {
+                    if (elanes[i] == undefined) {
+                      new Tower('The Mirror', 1, 1, 80, 0, 0, 0, undefined, undefined, undefined, undefined, 'damage', 5, 'all', 't', undefined, undefined, undefined, undefined, this.loc[0] + i, false);
+                      break;
+                    }
+                  }
+                }
+                break;
+              case "The Prism of Eternity":
+                if (elanes[0] == undefined || elanes[1] == undefined || elanes[2] == undefined) {
+                  for (let i = 0; i < 3; i++) {
+                    if (elanes[i] == undefined) {
+                      new Tower('The Prism of Eternity', 'i dont know yet', 'idk', 0, 0, 0, 0, 'damage', 10+10, 'others', null, undefined, undefined, undefined, undefined, 'healing', '20%', 'others', undefined, this.loc[0] + i, false);
+                      break;
+                    }
+                  }
+                }
+                break;
+              default:
+                break;
+            }
           }
         }
         break;
@@ -190,10 +206,10 @@ class Card {
                 affected = '';
                 for (let i of cLanes) {
                   if (elanes[i-1] != undefined) {
-                    if ((elanes[i-1].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i-1].chance) || elanes[i-1].chance == 0) { // basically, if the tower has a chance of blocking and the tower does NOT block, or the tower just can't block: make it take damage
-                    elanes[i-1].hp -= (this.abone * (1 - elanes[i-1][this.abthree + 'def']));
-                    affected += i;
-                    elanes[i-1].hit();
+                    if (((elanes[i-1].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i-1].chance) || elanes[i-1].chance == 0) || elanes[i-1].stunned == true) { // basically, if the tower has a chance of blocking and the tower does NOT block, or the tower just can't block: make it take damage
+                      elanes[i-1].hp -= (this.abone * (1 - elanes[i-1][this.abthree + 'def']));
+                      affected += i;
+                      elanes[i-1].hitted();
                     }
                   } else {
                     hit('enemy');
@@ -225,10 +241,10 @@ class Card {
             	affected = '';
             	let i = Math.floor(Math.random() * 3);
               if (lanes[i] != undefined) {
-                if ((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) {
-              	lanes[i].hp -= (this.abone * (1- lanes[i][this.abthree + 'def']));
-                affected += (i+1);
-                lanes[i].hit();
+                if (((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) || lanes[i].stunned == true) {
+                  lanes[i].hp -= (this.abone * (1- lanes[i][this.abthree + 'def']));
+                  affected += (i+1);
+                  lanes[i].hitted();
                 }
               } else {
                 hit('player');
@@ -238,9 +254,9 @@ class Card {
             	for (let i = 0; i < 3; i++) {
                 if (lanes[i] != undefined) {
               	  if ((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) {
-              		lanes[i].hp -= (this.abone * (1- lanes[i][this.abthree + 'def']));
-                	affected += (i+1);
-                	lanes[i].hit();
+                    lanes[i].hp -= (this.abone * (1- lanes[i][this.abthree + 'def']));
+                    affected += (i+1);
+                    lanes[i].hitted();
                   }
                 } else {
                   hit('player');
@@ -273,9 +289,11 @@ class Card {
                 mana -= this.cost;
                 affected = '';
                 for (let i of cLanes) {
-                  if (lanes[i-1][this.abthree + 'def'] < this.abone) {
-                    lanes[i-1][this.abthree + 'def'] = this.abone;
-                    affected += i;
+                  if (lanes[i-1] != undefined) {
+                    if (lanes[i-1][this.abthree + 'def'] < this.abone) {
+                      lanes[i-1][this.abthree + 'def'] = this.abone;
+                      affected += i;
+                    }
                   }
                 }
                 if (affected != '') {
@@ -293,16 +311,20 @@ class Card {
           	if (this.abtwo == 1) {
             	affected = '';
             	let i = Math.floor(Math.random() * 3);
-              if (lanes[i][this.abthree + 'def'] < this.abone) {
-              	lanes[i][this.abthree + 'def'] = this.abone;
-                affected += (i+1);
+              if (elanes[i] != undefined) {
+                if (elanes[i][this.abthree + 'def'] < this.abone) {
+                  elanes[i][this.abthree + 'def'] = this.abone;
+                  affected += (i+1);
+                }
               }
             } else if (this.abtwo == 3) {
             	affected = '';
-            	for (let i = 0; i < 3; i++) {
-              	if (lanes[i][this.abthree + 'def']) {
-                	lanes[i][this.abhtree + 'def'] = this.abone;
-                  affected += (i+1);
+              if (elanes[i] != undefined) {
+                for (let i = 0; i < 3; i++) {
+                  if (elanes[i][this.abthree + 'def']) {
+                    elanes[i][this.abhtree + 'def'] = this.abone;
+                    affected += (i+1);
+                  }
                 }
               }
             }
@@ -319,14 +341,17 @@ class Card {
           if (this.loc == 'player') {
             if (mana >= this.cost) {
               if (cLanes.length == this.abtwo) {
+                mana -= this.cost;
                 affected = '';
                 for (let i of cLanes) {
-                  if (lanes[i-1].hp < lanes[i-1].maxhp) {
-                    lanes[i-1].hp += this.abone;
-                    affected += i;
-                  }
-                  if (lanes[i-1].hp > lanes[i-1].maxhp) {
-                    lanes[i-1].hp = lanes[i-1].maxhp;
+                  if (lanes[i-1] != undefined) {
+                    if (lanes[i-1].hp < lanes[i-1].maxhp) {
+                      lanes[i-1].hp += this.abone;
+                      affected += i;
+                    }
+                    if (lanes[i-1].hp > lanes[i-1].maxhp) {
+                      lanes[i-1].hp = lanes[i-1].maxhp;
+                    }
                   }
                 }
                 if (affected != '') {
@@ -344,23 +369,27 @@ class Card {
             if (this.abtwo == 1) {
             	affected = '';
               let i = Math.floor(Math.random() * 3);
-            	if (lanes[i].hp < lanes[i].maxhp) {
-              	lanes[i].hp += this.abone;
-                affected += i;
-              }
-              if (lanes[i].hp > lanes[i].maxhp) {
-              	lanes[i].hp = lanes[i].maxhp;
+              if (elanes[i] != undefined) {
+                if (elanes[i].hp < elanes[i].maxhp) {
+                  elanes[i].hp += this.abone;
+                  affected += i;
+                }
+                if (elanes[i].hp > elanes[i].maxhp) {
+                  elanes[i].hp = elanes[i].maxhp;
+                }
               }
            	} else if (this.abtwo == 3) {
            		affected = '';
             	for (let i = 0; i < 3; i++) {
-              	if (lanes[i].hp < lanes[i].maxhp) {
-              	lanes[i].hp += this.abone;
-                affected += i;
-              	}
-              	if (lanes[i].hp > lanes[i].maxhp) {
-              		lanes[i].hp = lanes[i].maxhp;
-              	}
+                if (elanes[i] != undefined) {
+                  if (elanes[i].hp < elanes[i].maxhp) {
+                  elanes[i].hp += this.abone;
+                  affected += i;
+                  }
+                  if (elanes[i].hp > elanes[i].maxhp) {
+                    elanes[i].hp = elanes[i].maxhp;
+                  }
+                }
               }
            	}
             if (affected != '') {
@@ -423,32 +452,152 @@ class Card {
             case 'Combustion':
               break;
             case 'Fired Up':
-            if (cLanes.length == 1) {
-            	affected = ''
-            	lanes[cLanes[0]].hp -= 10;
-              affected += cLanes[0];
-              if (affected != '') {
-              	anim('pdamage' + affected); // i forgot to check if there is actually a tower there so make sure you do that later
-               }
-            	affected = ''
-            	if (lanes[cLanes[0]].mdef < 0.2) {
-              	lanes[cLanes[0]].mdef = 0.2;
-                affected += cLanes[0];
+              if (mana >= this.cost) {
+                if (cLanes.length == 1) {
+                  mana -= this.cost
+                  affected = ''
+                  if (lanes[cLanes[0]] != undefined) {
+                    lanes[cLanes[0]].hp -= 10;
+                    lanes[cLanes[0]].hitted();
+                  }
+                  affected += cLanes[0];
+                  if (affected != '') {
+                    anim('pdamage' + affected); // i forgot to check if there is actually a tower there so make sure you do that later
+                  }
+                  affected = ''
+                  if (lanes[cLanes[0]] != undefined) {
+                    if (lanes[cLanes[0]].mdef < 0.2) {
+                      lanes[cLanes[0]].mdef = 0.2;
+                      affected += cLanes[0];
+                    }
+                  }
+                  if (affected != '') {
+                    anim('pdefense' + affected);
+                  }
+                }
               }
-              if (affected != '') {
-              	anim('pdefense' + affected);
-              }
-            }
               break;
             case 'Icicles':
+                if (mana >= this.cost) {
+                  if (cLanes.length == this.abtwo) {
+                    mana -= this.cost;
+                    affected = '';
+                    for (let i of cLanes) {
+                      if (elanes[i-1] != undefined) {
+                        if ((elanes[i-1].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i-1].chance) || elanes[i-1].chance == 0) { // basically, if the tower has a chance of blocking and the tower does NOT block, or the tower just can't block: make it take damage
+                          elanes[i-1].hp -= (this.abone * (1 - elanes[i-1][this.abthree + 'def']));
+                          elanes[i-1].stunned = true; // stun it
+                          affected += i;
+                          elanes[i-1].hitted();
+                        }
+                      } else {
+                        hit('enemy');
+                      }
+                    }
+                    if (affected != '') {
+                      anim('edamage' + affected);
+                    }
+                    affected = '';
+                    for (let i = 0; i < 3; i++) {
+                      if (elanes[i].hp <= 0) {
+                          elanes[i] = undefined;
+                        affected += (i+1);
+                      }
+                    }
+                    if (affected != '') {
+                      anim('edeath' + affected);
+                    }
+                    hand[hand.indexOf(this)] = undefined;
+                    discard.push(this);
+                  } else {
+                    retry('lanes'); // maybe change the retry function so that the parameter is like the type of retry
+                  }
+                } else {
+                  retry('mana');
+                }
               break;
             case 'Tempest Ward':
+                if (mana >= this.cost) {
+                  if (cLanes.length == this.abtwo) {
+                    mana -= this.cost;
+                    affected = '';
+                    for (let i of cLanes) {
+                      if (lanes[i-1] != undefined) {
+                        if (lanes[i-1][mdef] < this.abone || lanes[i-1][mdef] < this.abone) {
+                          affected += i;
+                        }
+                        if (lanes[i-1][mdef] < this.abone) {
+                          lanes[i-1][mdef] = this.abone;
+                        }
+                        if (lanes[i-1][pdef] < this.abone) {
+                          lanes[i-1][pdef] = this.abone;
+                        }
+                      }
+                    }
+                    if (affected != '') {
+                      anim('pdefense' + affected);
+                    }
+                    hand[hand.indexOf(this)] = undefined;
+                    discard.push(this);
+                  } else {
+                    retry('lanes');
+                  }
+                } else {
+                  retry('mana');
+                }
               break;
             case 'Prestidigitation':
               break;
             case 'Gaias Blessing':
+              if (mana >= this.cost) {
+                if (cLanes.length == this.abtwo) {
+                  mana -= this.cost;
+                  affected = '';
+                  for (let i of cLanes) {
+                    if (lanes[i-1] != undefined) {
+                      lanes[i-1].maxhp += 20;
+                      if (lanes[i-1].hp < lanes[i-1].maxhp) {
+                        lanes[i-1].hp += this.abone;
+                        affected += i;
+                      }
+                      if (lanes[i-1].hp > lanes[i-1].maxhp) {
+                        lanes[i-1].hp = lanes[i-1].maxhp;
+                      }
+                    }
+                  }
+                  if (affected != '') {
+                    anim('phealing' + affected);
+                  }
+                  hand[hand.indexOf(this)] = undefined;
+                  discard.push(this);
+                } else {
+                  retry('lanes');
+                }
+              } else {
+                retry('mana');
+              }
               break;
             case 'Reflourish':
+              if (mana >= this.cost) {
+                if (cLanes.length == this.abtwo) {
+                  mana -= this.cost;
+                  affected = '';
+                  for (let i of cLanes) {
+                    if (lanes[i-1] != undefined) {
+                      lanes[i-1].maxhp += 20;
+                    }
+                  }
+                  if (affected != '') {
+                    anim('phealing' + affected);
+                  }
+                  hand[hand.indexOf(this)] = undefined;
+                  discard.push(this);
+                } else {
+                  retry('lanes');
+                }
+              } else {
+                retry('mana');
+              }
               break;
             default:
               break;
@@ -491,20 +640,274 @@ class Tower {
     }
 
     // add the things below when you are able to actually get cards working because like there are some enemy nuances in how i might decide to make them use cards because the ai just might be a lot simpler
-    this.hit = () => {
-      switch (onhit) {
-        case "damage":
-          
-          break;
-        default:
-          break;
+    this.hitted = () => {
+      if (this.stunned == false) {
+        switch (this.onhit) {
+          case "damage":
+            if (this.htwo == 'same') {
+              affected = '';
+              let i = this.loc[1]-1;
+              if (elanes[i] != undefined) {
+                if (((elanes[i].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i].chance) || elanes[i].chance == 0) || elanes[i].stunned == true)
+                  elanes[i] -= (this.hone * (1-elanes[i][this.hthree + 'def']));
+                  elanes[i].hitted();
+                  affected += i;
+              } else {
+                hit('enemy');
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'damage' + affected);
+              }
+            } else if (this.htwo == 'others') {
+              affected = '';
+              let k = [0, 1, 2]
+              k.splice(k.indexOf(this.loc[1]-1), 1);
+              let i = k[0];
+              let j = k[1];
+              if (elanes[i] != undefined) {
+                if (((elanes[i].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i].chance) || elanes[i].chance == 0) || elanes[i].stunned == true)
+                  elanes[i] -= (this.hone * (1-elanes[i][this.hthree + 'def']));
+                  elanes[i].hitted();
+                  affected += i;
+              } else {
+                hit('enemy');
+              }
+              if (elanes[j] != undefined) {
+                if (((elanes[j].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[j].chance) || elanes[j].chance == 0) || elanes[j].stunned == true)
+                  elanes[j] -= (this.hone * (1-elanes[j][this.hthree + 'def']));
+                  elanes[j].hitted();
+                  affected += j;
+              } else {
+                hit('enemy');
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'damage' + affected);
+              }
+            } else if (this.htwo == 'all') {
+              affected = '';
+              for (let i = 0; i < 3; i++) {
+                if (elanes[i] != undefined) {
+                  if (((elanes[i].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i].chance) || elanes[i].chance == 0) || elanes[i].stunned == true)
+                    elanes[i] -= (this.hone * (1-elanes[i][this.hthree + 'def']));
+                    elanes[i].hitted();
+                    affected += i;
+                } else {
+                  hit('enemy');
+                }
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'damage' + affected);
+              }
+            }
+            break;
+          case "healing":
+            if (this.htwo == 'same') {
+              affected = '';
+              let i = this.loc[1]-1;
+              if (lanes[i] != undefined) {
+                if (lanes[i].hp < lanes[i].maxhp) {
+                  lanes[i].hp += this.hone;
+                  affected += i;
+                }
+                if (lanes[i].hp > lanes[i].maxhp) {
+                  lanes[i].hp = lanes[i].maxhp;
+                }
+                if (affected != '') {
+                  anim(this.loc[0] + 'healing' + affected);
+                }
+              }
+            } else if (this.htwo == 'others') {
+              affected = '';
+              let k = [0, 1, 2];
+              k.splice(k.indexOf(this.loc[1]-1));
+              let i = k[0];
+              let j = k[1];
+              if (lanes[i] != undefined) {
+                if (lanes[i].hp < lanes[i].maxhp) {
+                  lanes[i].hp += this.hone;
+                  affected += i;
+                }
+                if (lanes[i].hp > lanes[i].maxhp) {
+                  lanes[i].hp = lanes[i].maxhp;
+                }
+              }
+              if (lanes[j] != undefined) {
+                if (lanes[j].hp < lanes[j].maxhp) {
+                  lanes[j].hp += this.hone;
+                  affected += i;
+                }
+                if (lanes[j].hp > lanes[j].maxhp) {
+                  lanes[j].hp = lanes[j].maxhp;
+                }
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'healing' + affected);
+              }
+            } else if (this.htwo == 'all') {
+              affected = '';
+              for (let i = 0; i < 3; i++) {
+                if (lanes[i] != undefined) {
+                  if (lanes[i].hp < lanes[i].maxhp) {
+                    lanes[i].hp += this.hone;
+                    affected += i;
+                  }
+                  if (lanes[i].hp > lanes[i].maxhp) {
+                    lanes[i].hp = lanes[i].maxhp;
+                  }
+                }
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'healing' + affected)
+              }
+            }
+            break;
+          default:
+            break;
+        }
       }
     }
     this.blocked = () => {
-
+      if (this.stunned == false) {
+        // literally only the mirror has this so lets just make that one specifically
+        if (this.name == 'The Mirror') {
+          affected = '';
+          for (let i = 0; i < 3; i++) {
+            if (((lanes[i].chance > 0 && (Math.floor(Math.random() + 100) + 1) > lanes[i].chance) || lanes[i].chance == 0) || lanes[i].stunned == true) {
+              lanes[i].hp -= 5;
+              affected += i;
+            }
+          }
+          if (affected != '') {
+            anim('pdamage' + affected);
+          }
+        }
+      }
     }
     this.destroyed = () => {
-
+      if (this.stunned == false) {
+        switch (this.onhit) {
+          case "damage":
+            if (this.htwo == 'same') {
+              affected = '';
+              let i = this.loc[1]-1;
+              if (elanes[i] != undefined) {
+                if (((elanes[i].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i].chance) || elanes[i].chance == 0) || elanes[i].stunned == true)
+                  elanes[i] -= (this.hone * (1-elanes[i][this.hthree + 'def']));
+                  elanes[i].hitted();
+                  affected += i;
+              } else {
+                hit('enemy');
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'damage' + affected);
+              }
+            } else if (this.htwo == 'others') {
+              affected = '';
+              let k = [0, 1, 2]
+              k.splice(k.indexOf(this.loc[1]-1), 1);
+              let i = k[0];
+              let j = k[1];
+              if (elanes[i] != undefined) {
+                if (((elanes[i].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i].chance) || elanes[i].chance == 0) || elanes[i].stunned == true)
+                  elanes[i] -= (this.hone * (1-elanes[i][this.hthree + 'def']));
+                  elanes[i].hitted();
+                  affected += i;
+              } else {
+                hit('enemy');
+              }
+              if (elanes[j] != undefined) {
+                if (((elanes[j].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[j].chance) || elanes[j].chance == 0) || elanes[j].stunned == true)
+                  elanes[j] -= (this.hone * (1-elanes[j][this.hthree + 'def']));
+                  elanes[j].hitted();
+                  affected += j;
+              } else {
+                hit('enemy');
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'damage' + affected);
+              }
+            } else if (this.htwo == 'all') {
+              affected = '';
+              for (let i = 0; i < 3; i++) {
+                if (elanes[i] != undefined) {
+                  if (((elanes[i].chance > 0 && (Math.floor(Math.random() * (100)) + 1) > elanes[i].chance) || elanes[i].chance == 0) || elanes[i].stunned == true)
+                    elanes[i] -= (this.hone * (1-elanes[i][this.hthree + 'def']));
+                    elanes[i].hitted();
+                    affected += i;
+                } else {
+                  hit('enemy');
+                }
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'damage' + affected);
+              }
+            }
+            break;
+          case "healing":
+            if (this.htwo == 'same') {
+              affected = '';
+              let i = this.loc[1]-1;
+              if (lanes[i] != undefined) {
+                if (lanes[i].hp < lanes[i].maxhp) {
+                  lanes[i].hp += this.hone;
+                  affected += i;
+                }
+                if (lanes[i].hp > lanes[i].maxhp) {
+                  lanes[i].hp = lanes[i].maxhp;
+                }
+                if (affected != '') {
+                  anim(this.loc[0] + 'healing' + affected);
+                }
+              }
+            } else if (this.htwo == 'others') {
+              affected = '';
+              let k = [0, 1, 2];
+              k.splice(k.indexOf(this.loc[1]-1));
+              let i = k[0];
+              let j = k[1];
+              if (lanes[i] != undefined) {
+                if (lanes[i].hp < lanes[i].maxhp) {
+                  lanes[i].hp += this.hone;
+                  affected += i;
+                }
+                if (lanes[i].hp > lanes[i].maxhp) {
+                  lanes[i].hp = lanes[i].maxhp;
+                }
+              }
+              if (lanes[j] != undefined) {
+                if (lanes[j].hp < lanes[j].maxhp) {
+                  lanes[j].hp += this.hone;
+                  affected += i;
+                }
+                if (lanes[j].hp > lanes[j].maxhp) {
+                  lanes[j].hp = lanes[j].maxhp;
+                }
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'healing' + affected);
+              }
+            } else if (this.htwo == 'all') {
+              affected = '';
+              for (let i = 0; i < 3; i++) {
+                if (lanes[i] != undefined) {
+                  if (lanes[i].hp < lanes[i].maxhp) {
+                    lanes[i].hp += this.hone;
+                    affected += i;
+                  }
+                  if (lanes[i].hp > lanes[i].maxhp) {
+                    lanes[i].hp = lanes[i].maxhp;
+                  }
+                }
+              }
+              if (affected != '') {
+                anim(this.loc[0] + 'healing' + affected)
+              }
+            }
+            break;
+          default:
+            break;
+        }
+      }
     }
   }
 };
