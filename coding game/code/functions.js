@@ -316,63 +316,65 @@ document.addEventListener("click", (event) => {
       }
       break;
     case "playing":
-      if (event.x > 1720 && event.x < 2320 && event.y > 50 && event.y < 650) {
-        // enemy tower 1
+      if (turn == 'player') {
+        if (event.x > 1720 && event.x < 2320 && event.y > 50 && event.y < 650) {
+          // enemy tower 1
 
-      } else if (event.x > 2420 && event.x < 3020 && event.y > 50 && event.y < 650) {
-        // enemy tower 2
+        } else if (event.x > 2420 && event.x < 3020 && event.y > 50 && event.y < 650) {
+          // enemy tower 2
 
-      } else if (event.x > 3120 && event.x < 3720 && event.y > 50 && event.y < 650) {
-        // enemy tower 3
+        } else if (event.x > 3120 && event.x < 3720 && event.y > 50 && event.y < 650) {
+          // enemy tower 3
 
-      } else if (event.x > 1720 && event.x < 2320 && event.y > 1010 && event.y < 1610) {
-        // player tower 1
+        } else if (event.x > 1720 && event.x < 2320 && event.y > 1010 && event.y < 1610) {
+          // player tower 1
 
-      } else if (event.x > 2420 && event.x < 3020 && event.y > 1010 && event.y < 1610) {
-        // player tower 2
+        } else if (event.x > 2420 && event.x < 3020 && event.y > 1010 && event.y < 1610) {
+          // player tower 2
 
-      } else if (event.x > 3120 && event.x < 3720 && event.y > 1010 && event.y < 1610) {
-        // player tower 3
+        } else if (event.x > 3120 && event.x < 3720 && event.y > 1010 && event.y < 1610) {
+          // player tower 3
 
-      } else if (event.x > 1745 && event.x < 2195 && event.y > 1685 && event.y < 2135) {
-        hand[0].use();
-        alert('first hand thing clicked');
-      } else if (event.x > 2245 && event.x < 2695 && event.y > 1685 && event.y < 2135) {
-        hand[1].use();
-        alert('second hand thing clicked');
-      } else if (event.x > 2745 && event.x < 3195 && event.y > 1685 && event.y < 2135) {
-        hand[2].use();
-        alert('third hand thing clicked');
-      } else if (event.x > 3345 && event.x < 3795 && event.y > 1685 && event.y < 2135) {
-        endturn();
-        alert("should've ended turn");
-      } else if (event.x > 1720 && event.x < 2320 && event.y > 730 && event.y < 930) {
-        if (!(/1/.test(cLanes.join))) {
-          cLanes.push(1);
-          alert('1st lane selected');
-        } else if (/1/.test(cLanes.join)) {
-          cLanes.splice(cLanes.indexOf(1), 1);
-          alert('1st lane deselected');
+        } else if (event.x > 1745 && event.x < 2195 && event.y > 1685 && event.y < 2135) {
+          hand[0].use();
+          alert('first hand thing clicked');
+        } else if (event.x > 2245 && event.x < 2695 && event.y > 1685 && event.y < 2135) {
+          hand[1].use();
+          alert('second hand thing clicked');
+        } else if (event.x > 2745 && event.x < 3195 && event.y > 1685 && event.y < 2135) {
+          hand[2].use();
+          alert('third hand thing clicked');
+        } else if (event.x > 3345 && event.x < 3795 && event.y > 1685 && event.y < 2135) {
+          endturn();
+          alert("should've ended turn");
+        } else if (event.x > 1720 && event.x < 2320 && event.y > 730 && event.y < 930) {
+          if (!(/1/.test(cLanes.join))) {
+            cLanes.push(1);
+            alert('1st lane selected');
+          } else if (/1/.test(cLanes.join)) {
+            cLanes.splice(cLanes.indexOf(1), 1);
+            alert('1st lane deselected');
+          }
+          cLanes.sort(function(a, b){return a - b});
+        } else if (event.x > 2420 && event.x < 3020 && event.y > 730 && event.y < 930) {
+          if (!(/2/.test(cLanes.join))) {
+            cLanes.push(2);
+            alert('2nd lane selected');
+          } else if (/2/.test(cLanes.join)) {
+            cLanes.splice(cLanes.indexOf(2), 1);
+            alert('2nd lane deselected');
+          }
+          cLanes.sort(function(a, b){return a - b});
+        } else if (event.x > 3120 && event.x < 2370 && event.y > 730 && event.y < 930) {
+          if (!(/3/.test(cLanes.join))) {
+            cLanes.push(3);
+            alert('3rd lane selected');
+          } else if (/3/.test(cLanes.join)) {
+            cLanes.splice(cLanes.indexOf(3), 1);
+            alert('3rd lane deselected');
+          }
+          cLanes.sort(function(a, b){return a - b});
         }
-        cLanes.sort(function(a, b){return a - b});
-      } else if (event.x > 2420 && event.x < 3020 && event.y > 730 && event.y < 930) {
-        if (!(/2/.test(cLanes.join))) {
-          cLanes.push(2);
-          alert('2nd lane selected');
-        } else if (/2/.test(cLanes.join)) {
-          cLanes.splice(cLanes.indexOf(2), 1);
-          alert('2nd lane deselected');
-        }
-        cLanes.sort(function(a, b){return a - b});
-      } else if (event.x > 3120 && event.x < 2370 && event.y > 730 && event.y < 930) {
-        if (!(/3/.test(cLanes.join))) {
-          cLanes.push(3);
-          alert('3rd lane selected');
-        } else if (/3/.test(cLanes.join)) {
-          cLanes.splice(cLanes.indexOf(3), 1);
-          alert('3rd lane deselected');
-        }
-        cLanes.sort(function(a, b){return a - b});
       }
       break;
     case "popup":
@@ -483,18 +485,19 @@ function run() {
     }
 
     // draw hover text thing
+    if (gs == 'playing' || gs == 'animation') {
+      // player towers
+      if (lastx > 1720 && lastx < 2320 && lasty > 1010 && lasty < 1610) {
+        c.drawImage(sprites.Hoverbox, 1520, 160);
 
-    // player towers
-    if (lastx > 1720 && lastx < 2320 && lasty > 1010 && lasty < 1610) {
-      c.drawImage(sprites.Hoverbox, 1520, 160);
-
-    }
-    // enemy towers
-    if (lastx > 1720 && lastx < 2320 && lasty > 50 && lasty < 650) {
-      c.drawImage(sprites.Hoverbox, 1520, 700);
-      write('bold 75px Courier New', elanes[0].name, 1550, 800, 0, 0, 0, 1);
-      write('bold 100px Courier New', `${elanes[0].hp}/${elanes[0].maxhp} HP`, 1550, 900, 144, 238, 144, 1);
-      printAtWordWrap()
+      }
+      // enemy towers
+      if (lastx > 1720 && lastx < 2320 && lasty > 50 && lasty < 650) {
+        c.drawImage(sprites.Hoverbox, 1520, 700);
+        write('bold 75px Courier New', elanes[0].name, 1550, 800, 0, 0, 0, 1);
+        write('bold 100px Courier New', `${elanes[0].hp}/${elanes[0].maxhp} HP`, 1550, 900, 144, 238, 144, 1);
+        printAtWordWrap()
+      }
     }
 
     if (gs == "popup") {
