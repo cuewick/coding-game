@@ -336,10 +336,16 @@ document.addEventListener("click", (event) => {
 
       } else if (event.x > 1745 && event.x < 2195 && event.y > 1685 && event.y < 2135) {
         hand[0].use();
+        alert('first hand thing clicked');
       } else if (event.x > 2245 && event.x < 2695 && event.y > 1685 && event.y < 2135) {
         hand[1].use();
+        alert('second hand thing clicked');
       } else if (event.x > 2745 && event.x < 3195 && event.y > 1685 && event.y < 2135) {
         hand[2].use();
+        alert('third hand thing clicked');
+      } else if (event.x > 3345 && event.x < 3795 && event.y > 1685 && event.y < 2135) {
+        endturn();
+        alert("should've ended turn");
       }
       break;
     case "popup":
