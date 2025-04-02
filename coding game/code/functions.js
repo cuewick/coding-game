@@ -316,6 +316,25 @@ document.addEventListener("click", (event) => {
       }
       break;
     case "playing":
+      if (event.x > 1720 && event.x < 2320 && event.y > 50 && event.y < 650) {
+        // enemy tower 1
+
+      } else if (event.x > 2420 && event.x < 3020 && event.y > 50 && event.y < 650) {
+        // enemy tower 2
+
+      } else if (event.x > 3120 && event.x < 3720 && event.y > 50 && event.y < 650) {
+        // enemy tower 3
+
+      } else if (event.x > 1720 && event.x < 2320 && event.y > 1010 && event.y < 1610) {
+        // player tower 1
+
+      } else if (event.x > 2420 && event.x < 3020 && event.y > 1010 && event.y < 1610) {
+        // player tower 2
+
+      } else if (event.x > 3120 && event.x < 3720 && event.y > 1010 && event.y < 1610) {
+        // player tower 3
+
+      }
       break;
     case "popup":
       break;
@@ -359,8 +378,13 @@ function run() {
     c.drawImage(sprites.Background, 0, 0);
     c.drawImage(sprites.Discard, 100, 980);
     c.drawImage(sprites.Draw, 900, 980);
-    write('bold 150px Courier New', enemy, 25, 125, 0, 0, 0, 1);
-    write('bold 150px Courier New', 'Player', 25, 1800, 0, 0, 0, 1);
+    if (turn == 'player') {
+      write('bold 150px Courier New', enemy, 25, 125, 0, 0, 0, 1);
+      write('bold 150px Courier New', 'Player', 25, 1800, 0, 255, 0, 1);
+    } else if (turn == 'enemy') {
+      write('bold 150px Courier New', enemy, 25, 125, 0, 255, 0, 1);
+      write('bold 150px Courier New', 'Player', 25, 1800, 0, 0, 0, 1);
+    }
     c.drawImage(sprites.Heart, 50, 175, 300, 300);
     c.drawImage(sprites.Heart, 50, 1850, 300, 300);
     write('bold 400px Courier New', ehp, 400, 450, 255, 255, 255, 1);
