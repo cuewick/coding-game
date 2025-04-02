@@ -51,6 +51,7 @@ function anim(type) {
 function endturn() {
   if (turn == 'player') {
   	turn == 'enemy';
+    alert(turn);
     // end the player's turn
   	for (let i = 0; i < 3; i++) {
     	if (hand[i] != undefined) {
