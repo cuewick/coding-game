@@ -346,6 +346,7 @@ document.addEventListener("click", (event) => {
           hand[2].use();
           alert('third hand thing clicked');
         } else if (event.x > 3345 && event.x < 3795 && event.y > 1685 && event.y < 2135) {
+          alert(turn);
           endturn();
           alert("should've ended turn");
         } else if (event.x > 1720 && event.x < 2320 && event.y > 730 && event.y < 930) {
