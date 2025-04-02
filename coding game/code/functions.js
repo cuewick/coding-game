@@ -18,13 +18,13 @@ function shuffle(person) {
 
 function drawCards(person) {
   if (person == 'player') {
-  	if (draw > 3) {
+  	if (draw.length > 3) {
     	for (let i = 0; i < 3; i++) {
       	let j = Math.floor(Math.random() * (draw.length));
       	hand.push(draw[j]);
       	draw.splice(j, 1);
       }
-    } else if (draw < 3) {
+    } else if (draw.length < 3) {
     	for (let i = draw.length - 1; i >= 0; i--) {
       	hand.push(draw[i]);
         draw.splice(i, 1);
@@ -121,19 +121,32 @@ function startgame(elmnt) {
   // set up enemy
   if (enemy == "The Chronomancer") {
     ehp = 10;
-    elanes = [undefined, undefined, undefined]
-    ehand = [undefined]
-    // new Tower(); //time altars
-    // new Tower();
-    // new Tower();
+    elanes = [undefined, undefined, undefined];
+    ehand = [];
     edraw = [];
+    new Tower('Time Altar', 100, 100, 0, 0.2, 0.2, 0, 'healing', 2, 'same', undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'e1', false);
+    new Tower('Time Altar', 100, 100, 0, 0.2, 0.2, 0, 'healing', 2, 'same', undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'e2', false);
+    new Tower('Time Altar', 100, 100, 0, 0.2, 0.2, 0, 'healing', 2, 'same', undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, 'e3', false);
+    new Card('damage', 'chronorandomdamage', undefined, undefined, 30, 1, 'm', 'enemy', false);
+    new Card('damage', 'chronoallmagicdamage', undefined, undefined, 10, 3, 'm', 'enemy', false);
+    new Card('damage', 'chronoallmagicdamage', undefined, undefined, 10, 3, 'm', 'enemy', false);
+    new Card('damage', 'chronoallphysicaldamage', undefined, undefined, 10, 3, 'p', 'enemy', false);
+    new Card('damage', 'chronoallphysicaldamage', undefined, undefined, 10, 3, 'p', 'enemy', false);
+    new Card('special', 'chronomagicdefense', undefined, undefined, 10, 3, 'm', 'enemy', false);
+    new Card('special', 'chronomagicdefense', undefined, undefined, 10, 3, 'm', 'enemy', false);
+    new Card('special', 'chronophysicaldefense', undefined, undefined, 10, 3, 'p', 'enemy', false);
+    new Card('special', 'chronophysicaldefense', undefined, undefined, 10, 3, 'p', 'enemy', false);
+    new Card('healing', 'chronohealing', undefined, undefined, 20, 3, undefined, 'enemy', false);
+    new Card('healing', 'chronohealing', undefined, undefined, 20, 3, undefined, 'enemy', false);
+
+    drawCards('enemy');
   }
   // set up player
   php = 5;
   mana = 2;
   draw = [];
   discard = [];
-  hand = [undefined, undefined, undefined];
+  hand = [];
   lanes = [undefined, undefined, undefined];
   turn = 'player';
   switch (element) {
@@ -149,9 +162,9 @@ function startgame(elmnt) {
       new Card('damage', 'Solar Flare', 2, 'Rare', 10, 3, 'm', 'player', false);
       new Card('damage', 'Solar Flare', 2, 'Rare', 10, 3, 'm', 'player', false);
       new Card('damage', 'Firebolt', 4, 'Legendary', 30, 1, 't', 'player', false);
-      new Card('special', 'Fired Up', 2, 'Common', undefined, undefined, undefined, 'player', false); // literally none of the abone abtwo abthrees matter here
       new Card('special', 'Fired Up', 2, 'Common', undefined, undefined, undefined, 'player', false);
-      new Card('healing', 'Bonfire', 1, 'Common', 20, 1, undefined, 'player', false); // for healing abthree doesn't matter so i just put it as true
+      new Card('special', 'Fired Up', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('healing', 'Bonfire', 1, 'Common', 20, 1, undefined, 'player', false);
       new Card('healing', 'Bonfire', 1, 'Common', 20, 1, undefined, 'player', false);
       new Card('tactic', 'Combustion', 1, 'Common', undefined, undefined, undefined, 'player', false);
       new Card('tower', 'Wizard Tower', 3, 'Rare', undefined, undefined, undefined, 'player', false);
@@ -160,12 +173,84 @@ function startgame(elmnt) {
       new Card('tower', 'Volcano', 2, 'Rare', undefined, undefined, undefined, 'player', false);
       new Card('tower', 'Volcano', 2, 'Rare', undefined, undefined, undefined, 'player', false);
       new Card('tower', 'Volcano', 2, 'Rare', undefined, undefined, undefined, 'player', false);
+
+      drawCards('player');
       break;
     case "water":
+      new Card('special', 'Icicles', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('special', 'Icicles', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('special', 'Icicles', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('special', 'Icicles', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Tidal Wave', 2, 'Common', 10, 3, 'p', 'player', false);
+      new Card('damage', 'Tidal Wave', 2, 'Common', 10, 3, 'p', 'player', false);
+      new Card('damage', 'Acid Rain', 3, 'Rare', 20, 2, 'm', 'player', false);
+      new Card('damage', 'Acid Rain', 3, 'Rare', 20, 2, 'm', 'player', false);
+      new Card('defense', 'Ice Shield', 2, 'Common', 0.25, 1, 'p', 'player', false);
+      new Card('defense', 'Ice Shield', 2, 'Common', 0.25, 1, 'p', 'player', false);
+      new Card('defense', 'Water Wall', 2, 'Common', 0.25, 1, 'm', 'player', false);
+      new Card('defense', 'Water Wall', 2, 'Common', 0.25, 1, 'm', 'player', false);
+      new Card('healing', 'Healing Rain', 3, 'Rare', 20, 3, undefined, 'player', false);
+      new Card('healing', 'Healing Rain', 3, 'Rare', 20, 3, undefined, 'player', false);
+      new Card('tactic', 'Fish', 1, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Ice Castle', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Ice Castle', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Ice Castle', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Underwater Ruin', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Underwater Ruin', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Underwater Ruin', 2, 'Common', undefined, undefined, undefined, 'player', false);
+
+      drawCards('player');
       break;
     case "air":
+      new Card('damage', 'Galeforce', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Galeforce', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Galeforce', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Galeforce', 1, 'Common', 10, 1, 'm', 'player', false);
+      new Card('damage', 'Wind Slice', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Wind Slice', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Wind Slice', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('damage', 'Wind Slice', 1, 'Common', 10, 1, 'p', 'player', false);
+      new Card('special', 'Tempest Ward', 2, 'Rare', 0.1, 3, undefined, 'player', false);
+      new Card('special', 'Tempest Ward', 2, 'Rare', 0.1, 3, undefined, 'player', false);
+      new Card('healing', 'Support Chinook', 2, 'Rare', 15, 2, undefined, 'player', false);
+      new Card('healing', 'Support Chinook', 2, 'Rare', 15, 2, undefined, 'player', false);
+      new Card('tactic', 'Prestidigitation', 1, 'Legendary', undefined, undefined, undefined, 'player', false);
+      new Card('tactic', 'Circulate', 1, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tactic', 'Conjure', 0, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tactic', 'Recall', 1, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Cloud', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Cloud', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Cloud', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Cloud', 2, 'Common', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Windmill', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Windmill', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Windmill', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Windmill', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+
+      drawCards('player');
       break;
     case "earth":
+      new Card('damage', 'Volley', 2, 'Common', 10, 3, 'p', 'player', false);
+      new Card('damage', 'Volley', 2, 'Common', 10, 3, 'p', 'player', false);
+      new Card('damage', 'Volley', 2, 'Common', 10, 3, 'p', 'player', false);
+      new Card('damage', 'Earthquake', 3, 'Rare', 20, 2, 'p', 'player', false);
+      new Card('damage', 'Earthquake', 3, 'Rare', 20, 2, 'p', 'player', false);
+      new Card('defense', 'Overgrowth', 2, 'Common', 0.2, 1, 'p', 'player', false);
+      new Card('defense', 'Overgrowth', 2, 'Common', 0.2, 1, 'p', 'player', false);
+      new Card('special', "Gaia's Blessing", 4, 'Legendary', 30, 1, undefined, 'player', false);
+      new Card('healing', 'Healing Spring', 3, 'Rare', 30, 2, undefined, 'player', false);
+      new Card('healing', 'Healing Spring', 3, 'Rare', 30, 2, undefined, 'player', false);
+      new Card('healing', 'Healing Spring', 3, 'Rare', 30, 2, undefined, 'player', false);
+      new Card('special', 'Reflourish', 2, 'Rare', 10, 1, undefined, 'player', false);
+      new Card('special', 'Reflourish', 2, 'Rare', 10, 1, undefined, 'player', false);
+      new Card('tower', 'Archer Tower', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Archer Tower', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Archer Tower', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Ancient Temple', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Ancient Temple', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+      new Card('tower', 'Ancient Temple', 3, 'Rare', undefined, undefined, undefined, 'player', false);
+
+      drawCards('player');
       break;
     default:
       break;
@@ -213,8 +298,7 @@ function lose() {
 // event listeners
 
 document.addEventListener("click", (event) => {
-  console.log(event.x);
-  console.log(event.y);
+  console.log(`click at (${event.x},${event.y})`);
   switch (gs) {
     case "selection":
       if (((event.x - event.y) < 1540) && ((event.x - event.y) > 692) && ((3148 - event.y) > event.x) && ((2300 - event.y) < event.x)) {
@@ -243,6 +327,15 @@ document.addEventListener("click", (event) => {
   }
 });
 
+let lastx;
+let lasty;
+
+document.addEventListener("mousemove", (event) => {
+  console.log(`mouse moved to (${event.x},${event.y})`);
+  lastx = event.x;
+  lasty = event.y;
+})
+
 // running
 
 function run() {
@@ -252,127 +345,6 @@ function run() {
     c.drawImage(sprites.Selection, 0, 0);
   }
 
-  if (gs == "animation") {
-    switch (queue[queue.length-1]) {
-      case 'edamage1':
-        break;
-      case 'edamage2':
-        break;
-      case 'edamage3':
-        break;
-      case 'edamage12':
-        break;
-      case 'edamage13':
-        break;
-      case 'edamage23':
-        break;
-      case 'edamage123':
-        break;
-      case 'pdamage1':
-        break;
-      case 'pdamage2':
-        break;
-      case 'pdamage3':
-        break;
-      case 'pdamage12':
-        break;
-      case 'pdamage13':
-        break;
-      case 'pdamage23':
-        break;
-      case 'pdamage123':
-        break;
-      case 'pdefense1':
-        break;
-      case 'pdefense2':
-        break;
-      case 'pdefense3':
-        break;
-      case 'pdefense12':
-        break;
-      case 'pdefense13':
-        break;
-      case 'pdefense23':
-        break;
-      case 'pdefense123':
-        break;
-      case 'edefense1':
-        break;
-      case 'edefense2':
-        break;
-      case 'edefense3':
-        break;
-      case 'edefense12':
-        break;
-      case 'edefense13':
-        break;
-      case 'edefense23':
-        break;
-      case 'edefense123':
-        break;
-      case 'phealing1':
-        break;
-      case 'phealing2':
-        break;
-      case 'phealing3':
-        break;
-      case 'phealing12':
-        break;
-      case 'phealing13':
-        break;
-      case 'phealing23':
-        break;
-      case 'phealing123':
-        break;
-      case 'ehealing1':
-        break;
-      case 'ehealing2':
-        break;
-      case 'ehealing3':
-        break;
-      case 'ehealing12':
-        break;
-      case 'ehealing13':
-        break;
-      case 'ehealing23':
-        break;
-      case 'ehealing123':
-        break;
-      /* death is funny so i might just make the code that originally draws the towers on the lanes have an if statement for death
-      case 'edeath1':
-        break;
-      case 'edeath2':
-        break;
-      case 'edeath3':
-        break;
-      case 'edeath12':
-        break;
-      case 'edeath13':
-        break;
-      case 'edeath23':
-        break;
-      case 'edeath123':
-        break;
-      case 'pdeath1':
-        break;
-      case 'pdeath2':
-        break;
-      case 'pdeath3':
-        break;
-      case 'pdeath12':
-        break;
-      case 'pdeath13':
-        break;
-      case 'pdeath23':
-        break;
-      case 'pdeath123':
-        break;
-      */
-      default:
-        break;
-    }
-    avar++;
-  }
   if (avar >= 30) {
   	if (queue == []) {
     	gs = 'playing';
@@ -382,7 +354,8 @@ function run() {
     }
   }
 
-  if (gs == ("playing" || "popup" || "animation")) {
+  if (gs == "playing" || gs == "popup" || gs == "animation") {
+    // draw game
     c.drawImage(sprites.Background, 0, 0);
     c.drawImage(sprites.Discard, 100, 980);
     c.drawImage(sprites.Draw, 900, 980);
@@ -399,6 +372,205 @@ function run() {
       c.drawImage(sprites.End_Turn_On, 3345, 1685, 450, 450);
     } else {
       c.drawImage(sprites.End_Turn_Off, 3345, 1685, 450, 450);
+    }
+
+    // draw hand
+    for (let i = 0; i < 3; i++) {
+      if (hand[i] != undefined) {
+        let j = (hand[i].name).replace(/ /g, '_');
+        j = j.replace("'", "");
+        c.drawImage(sprites[j], 1745 + (500*i), 1685, 450, 450)
+      }
+    }
+
+    // draw towers (if not dead)
+    // draw player towers
+    for (let i = 0; i < 3; i++) {
+      if (lanes[i] != undefined) {
+        let j = new RegExp(i);
+        if ((gs == 'playing' || queue != []) && !(j.test(queue[0])) && !(/pdeath/.test(queue[0]))) {
+          let k = (lanes[i].name.replace(/ /g, '_'));
+          k = k.replace("'", "");
+          c.drawImage(sprites[k], 1720 + (700*i), 1010, 600, 600);
+        } else if (j.test(queue[0] && /pdeath/.test(queue[0]))) {
+          let k = (lanes[i].name.replace(/ /g, '_'));
+          k = k.replace("'", "");
+          c.globalAlpha = 1 - (avar * (1/30));
+          c.drawImage(sprites[k], 1720 + (700*i), 1010, 600, 600);
+          c.globalAlpha = 1.0;
+        }
+      }
+    }
+    // draw enemy towers
+    for (let i = 0; i < 3; i++) {
+      if (elanes[i] != undefined) {
+        let j = new RegExp(i);
+        if ((gs == 'playing' || queue != []) && !(j.test(queue[0])) && !(/edeath/.test(queue[0]))) {
+          let k = (elanes[i].name.replace(/ /g, '_'));
+          k = k.replace("'", "");
+          c.drawImage(sprites[k], 1720 + (700*i), 50, 600, 600);
+        } else if (j.test(queue[0] && /edeath/.test(queue[0]))) {
+          let k = (elanes[i].name.replace(/ /g, '_'));
+          k = k.replace("'", "");
+          c.globalAlpha = 1 - (avar * (1/30));
+          c.drawImage(sprites[k], 1720 + (700*i), 50, 600, 600);
+          c.globalAlpha = 1.0;
+        }
+      }
+    }
+
+    // draw hover text thing
+
+    // player towers
+    if (lastx > 1720 && lastx < 2320 && lasty > 1010 && lasty < 1610) {
+      c.drawImage(sprites.Hoverbox, 1520, 160);
+
+    }
+    // enemy towers
+    if (lastx > 1720 && lastx < 2320 && lasty > 50 && lasty < 650) {
+      c.drawImage(sprites.Hoverbox, 1520, 700);
+      write('bold 75px Courier New', elanes[0].name, 1550, 800, 0, 0, 0, 1);
+      write('bold 100px Courier New', `${elanes[0].hp}/${elanes[0].maxhp} HP`, 1550, 900, 144, 238, 144, 1);
+      printAtWordWrap()
+    }
+
+    if (gs == "popup") {
+      c.fillStyle = "rgba(0, 0, 0, 0.5)";
+      c.fillRect(0, 0, canvas.width, canvas.height)
+    }
+    if (gs == "animation") {
+      switch (queue[queue.length-1]) {
+        case 'edamage1':
+          break;
+        case 'edamage2':
+          break;
+        case 'edamage3':
+          break;
+        case 'edamage12':
+          break;
+        case 'edamage13':
+          break;
+        case 'edamage23':
+          break;
+        case 'edamage123':
+          break;
+        case 'pdamage1':
+          break;
+        case 'pdamage2':
+          break;
+        case 'pdamage3':
+          break;
+        case 'pdamage12':
+          break;
+        case 'pdamage13':
+          break;
+        case 'pdamage23':
+          break;
+        case 'pdamage123':
+          break;
+        case 'pdefense1':
+          break;
+        case 'pdefense2':
+          break;
+        case 'pdefense3':
+          break;
+        case 'pdefense12':
+          break;
+        case 'pdefense13':
+          break;
+        case 'pdefense23':
+          break;
+        case 'pdefense123':
+          break;
+        case 'edefense1':
+          break;
+        case 'edefense2':
+          break;
+        case 'edefense3':
+          break;
+        case 'edefense12':
+          break;
+        case 'edefense13':
+          break;
+        case 'edefense23':
+          break;
+        case 'edefense123':
+          break;
+        case 'phealing1':
+          break;
+        case 'phealing2':
+          break;
+        case 'phealing3':
+          break;
+        case 'phealing12':
+          break;
+        case 'phealing13':
+          break;
+        case 'phealing23':
+          break;
+        case 'phealing123':
+          break;
+        case 'ehealing1':
+          break;
+        case 'ehealing2':
+          break;
+        case 'ehealing3':
+          break;
+        case 'ehealing12':
+          break;
+        case 'ehealing13':
+          break;
+        case 'ehealing23':
+          break;
+        case 'ehealing123':
+          break;
+        // nevermind it is probably easier to make it add here
+        case 'edeath1':
+          avar++;
+          break;
+        case 'edeath2':
+          avar++;
+          break;
+        case 'edeath3':
+          avar++;
+          break;
+        case 'edeath12':
+          avar++;
+          break;
+        case 'edeath13':
+          avar++;
+          break;
+        case 'edeath23':
+          avar++;
+          break;
+        case 'edeath123':
+          avar++;
+          break;
+        case 'pdeath1':
+          avar++;
+          break;
+        case 'pdeath2':
+          avar++;
+          break;
+        case 'pdeath3':
+          avar++;
+          break;
+        case 'pdeath12':
+          avar++;
+          break;
+        case 'pdeath13':
+          avar++;
+          break;
+        case 'pdeath23':
+          avar++;
+          break;
+        case 'pdeath123':
+          avar++;
+          break;
+        default:
+          break;
+      }
+      avar++;
     }
   }
 };
