@@ -346,6 +346,33 @@ document.addEventListener("click", (event) => {
       } else if (event.x > 3345 && event.x < 3795 && event.y > 1685 && event.y < 2135) {
         endturn();
         alert("should've ended turn");
+      } else if (event.x > 1720 && event.x < 2320 && event.y > 730 && event.y < 930) {
+        if (!(/1/.test(cLanes.join))) {
+          cLanes.push(1);
+          alert('1st lane selected');
+        } else if (/1/.test(cLanes.join)) {
+          cLanes.splice(cLanes.indexOf(1), 1);
+          alert('1st lane deselected');
+        }
+        cLanes.sort(function(a, b){return a - b});
+      } else if (event.x > 2420 && event.x < 3020 && event.y > 730 && event.y < 930) {
+        if (!(/2/.test(cLanes.join))) {
+          cLanes.push(2);
+          alert('2nd lane selected');
+        } else if (/2/.test(cLanes.join)) {
+          cLanes.splice(cLanes.indexOf(2), 1);
+          alert('2nd lane deselected');
+        }
+        cLanes.sort(function(a, b){return a - b});
+      } else if (event.x > 3120 && event.x < 2370 && event.y > 730 && event.y < 930) {
+        if (!(/3/.test(cLanes.join))) {
+          cLanes.push(3);
+          alert('3rd lane selected');
+        } else if (/3/.test(cLanes.join)) {
+          cLanes.splice(cLanes.indexOf(3), 1);
+          alert('3rd lane deselected');
+        }
+        cLanes.sort(function(a, b){return a - b});
       }
       break;
     case "popup":
