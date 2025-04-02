@@ -50,7 +50,7 @@ function anim(type) {
 
 function endturn() {
   if (turn == 'player') {
-  	turn == 'enemy';
+  	turn = 'enemy';
     alert(turn);
     // end the player's turn
   	for (let i = 0; i < 3; i++) {
@@ -63,7 +63,7 @@ function endturn() {
     drawCards('enemy');
     ai();
   } else if (turn == 'enemy') {
-  	turn == 'player'; // maybe move this later if it causes bugs as you are able to do stuff before your cards are dealt and stuff
+  	turn = 'player'; // maybe move this later if it causes bugs as you are able to do stuff before your cards are dealt and stuff
     // end the enemy's turn
     ediscard.push(ehand[0]);
     ehand.splice(0, 1);
