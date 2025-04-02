@@ -214,7 +214,7 @@ function startgame(elmnt) {
       new Card('special', 'Tempest Ward', 2, 'Rare', 0.1, 3, undefined, 'player', false);
       new Card('healing', 'Support Chinook', 2, 'Rare', 15, 2, undefined, 'player', false);
       new Card('healing', 'Support Chinook', 2, 'Rare', 15, 2, undefined, 'player', false);
-      new Card('tactic', 'Prestidigitation', 1, 'Legendary', undefined, undefined, undefined, 'player', false);
+      new Card('tactic', 'Presgendary', undefined, undefined, undefined, 'player', false);
       new Card('tactic', 'Circulate', 1, 'Rare', undefined, undefined, undefined, 'player', false);
       new Card('tactic', 'Conjure', 0, 'Common', undefined, undefined, undefined, 'player', false);
       new Card('tactic', 'Recall', 1, 'Rare', undefined, undefined, undefined, 'player', false);
@@ -334,6 +334,12 @@ document.addEventListener("click", (event) => {
       } else if (event.x > 3120 && event.x < 3720 && event.y > 1010 && event.y < 1610) {
         // player tower 3
 
+      } else if (event.x > 1745 && event.x < 2195 && event.y > 1685 && event.y < 2135) {
+        hand[0].use();
+      } else if (event.x > 2245 && event.x < 2695 && event.y > 1685 && event.y < 2135) {
+        hand[1].use();
+      } else if (event.x > 2745 && event.x < 3195 && event.y > 1685 && event.y < 2135) {
+        hand[2].use();
       }
       break;
     case "popup":
