@@ -9,7 +9,7 @@ const descriptions = {
     Firebolt: "Deal 30 true damage to one lane.",
     Fired_Up: "Give a tower 20% magic defense, but reduce its HP by 10. Does not stack.",
     Bonfire: "Increase a tower's HP by 20.",
-    Combustion: "Temporarily remove this card and another card, but deal 20 magic damage to one lane.",
+    Combustion: "Temporarily remove this card and another card, but deal 20 magic damage to one lane.\nSelect a card by going into your draw or discard pile and then clicking on the card. You may have to reselect the card on a new turn.",
     Wizard_Tower: "Has 50 HP.\nOn Hit: Deal 10 magic damage to the same lane.\nOn Destroy: Deal 10 magic damage to all lanes.",
     Volcano: "Has 100 HP\nOn Destroy: Deal 30 physical damage to all lanes.",
     // WATER CARDS
@@ -19,7 +19,7 @@ const descriptions = {
     Ice_Shield: "Give a tower 25% physical defense. Does not stack.",
     Water_Wall: "Give a tower 25% magic defense. Does not stack",
     Healing_Rain: "Increase all of your towers' HPs by 20.",
-    Fish: "Move a card from your draw pile into your hand.",
+    Fish: "Move a random card from your draw pile into your hand.",
     Ice_Castle: "Has 100 HP\nOn Hit: Deal 10 magic damage to the same lane.\nOn Destroy: Deal 10 magic damage to all lanes.",
     Underwater_Ruin: "Has 50 HP\nOn Destroy: Deal 30 physical damage to the same lane.",
     // AIR CARDS
@@ -27,10 +27,10 @@ const descriptions = {
     Wind_Slice: "Deal 10 physical damage to one lane.",
     Tempest_Ward: "Give all of your towers 10% magic and physical defense. Does not stack.",
     Support_Chinook: "Increase two of your towers' HPs by 15.",
-    Prestidigitation: "Turn this card into a selected card from your draw pile.",
+    Prestidigitation: "Turn this card into a selected card from your draw pile.\nSelect a card by going into your draw pile and then clicking on the card. You may have to reselect the card on a new turn.",
     Circulate: "Temporarily remove this card and put all other cards in your hand back into your draw pile. Then, draw 3 new cards.",
     Conjure: "Gain 1 mana.",
-    Recall: "Move a card from your discard pile back into your hand.",
+    Recall: "Move a random card from your discard pile back into your hand.",
     Cloud: "Has 50 HP. 50% chance to dodge incoming attacks.\nOn Destroy: This tower comes back to your discard pile.",
     Windmill: "Has 50 HP.\nOn Hit: Gain 1 mana.",
     // EARTH CARDS
@@ -42,11 +42,11 @@ const descriptions = {
     Reflourish: "Increase a tower's max HP by 10.",
     Foraging: "Gain 1 mana.",
     Archer_Tower: "Has 50 HP.\nOn Hit: Deal 10 physical damage to the same lane.\nOn Destroy: Add a temporary Volley card to your draw pile.",
-    Ancient_Temple: "Has 50 HP. 20% defense against magic damage.\nOn Hit: Heal 5 HP.\nOn Destroy: Gain 1 mana.",
+    Ancient_Temple: "Has 50 HP.\nOn Hit: Heal 5 HP.\nOn Destroy: Gain 1 mana.",
     // BOSS TOWERS
-    Time_Altar: "Has 100 HP. You must destroy every Time Altar before attacking The Chronomancer\nHas 20% defense against magic and physical damage.\nOn Hit: Heal 2 HP.\nIf a Time Altar reaches critical condition (less than 25 HP) for the first time, it will gain 20 HP.",
+    Time_Altar: "Has 100 HP. You must destroy every Time Altar before attacking The Chronomancer.\nOn Hit: Heal 2 HP.\nIf a Time Altar reaches critical condition (less than 25 HP) for the first time, it will gain 20 HP.",
     The_Mirror: "Has 1 HP. 80% chance to block incoming attacks.\nOn Block: All of your towers take 5 damage.",
-    The_Prism_Of_Eternity: "Has ?? HP. Deals 100% more damage for every other Prism of Eternity currently in play.\nOn Hit: Your other two lanes take 10 physical damage and 10 magic damage each.\nOn Destroy: Heal both of the other lanes by 20% of their max HP."
+    The_Prism_Of_Eternity: "Has 50 HP. Deals 100% more damage for every other Prism of Eternity currently in play.\nOn Hit: Your other two lanes take 10 physical damage and 10 magic damage each.\nOn Destroy: Heal both of the other lanes by 20% of their max HP."
 };
 
 function imgsrc(src) {
@@ -75,12 +75,24 @@ const sprites = {
 
     // SYMBOLS
     Heart: imgsrc("../assets/main game/heart.png"),
-        // add the element symbols later
+    Fire: imgsrc("../assets/main game/fire.png"),
+    Water: imgsrc("../assets/main game/water.png"),
+    Air: imgsrc("../assets/main game/air.png"),
+    Earth: imgsrc("../assets/main game/earth.png"),
 
     // ANIMATIONS
     Damage: imgsrc("../assets/main game/damage.png"),
     Defense: imgsrc("../assets/main game/defense.png"),
     Healing: imgsrc("../assets/main game/healing.png"),
+
+    // POPUPS
+    Retrymana: imgsrc("../assets/main game/retrymana.png"),
+    Retrylanes: imgsrc("../assets/main game/retrylanes.png"),
+    Retryoverride: imgsrc("../assets/main game/retryoverride.png"),
+    Retrydiscardempty: imgsrc("../assets/main game/retrydiscardempty.png"),
+    Retryselection: imgsrc("../assets/main game/retryselection.png"),
+    Drawpile: imgsrc("../assets/main game/drawpile.png"),
+    Discardpile: imgsrc("../assets/main game/discardpile.png"),
 
 
     // CARDS & TOWERS
