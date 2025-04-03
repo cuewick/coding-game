@@ -93,14 +93,6 @@ function ai() {
   }
 }
 
-function preview(card) {
-  // hover description
-}
-
-function verify() {
-  // when ending turn without doing anything
-}
-
 function retry(type) {
   /* when using a card and you cant
   either:
