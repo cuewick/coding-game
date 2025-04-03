@@ -288,10 +288,14 @@ class Card {
                   anim('edamage' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -305,7 +309,9 @@ class Card {
                   anim('edeath' + affected);
                 }
                 for (let i of affected) {
+                  if (elanes[i-1] != undefined) {
                   elanes[i-1].destroyed();
+                  }
                 }
                 hand[hand.indexOf(this)] = undefined;
                 discard.push(this);
@@ -349,10 +355,14 @@ class Card {
               anim('pdamage' + affected);
             }
             for (let i of affected) {
-              lanes[i-1].hitted();
+              if (lanes[i-1] != undefined) {
+                lanes[i-1].hitted();
+              }
             }
             for (let i of blockers) {
-              lanes[i-1].blocked();
+              if (lanes[i-1] != undefined) {
+                lanes[i-1].blocked();
+              }
             }
             affected = '';
             for (let i = 0; i < 3; i++) {
@@ -366,7 +376,9 @@ class Card {
               anim('pdeath' + affected);
             }
             for (let i of affected) {
-              lanes[i-1].destroyed();
+              if (lanes[i-1] != undefined) {
+                lanes[i-1].destroyed();
+              }
             }
             ehand[ehand.indexOf(this)] = undefined;
             ediscard.push(this);
@@ -587,7 +599,9 @@ class Card {
                     anim('pdamage' + affected);
                   }
                   for (let i of affected) {
-                    lanes[i-1].hitted();
+                    if (lanes[i-1] != undefined) {
+                      lanes[i-1].hitted();
+                    }
                   }
                   affected = '';
                   if (lanes[cLanes[0] - 1] != undefined) {
@@ -609,7 +623,9 @@ class Card {
                     anim('pdeath' + affected);
                   }
                   for (let i of affected) {
-                    lanes[i-1].destroyed();
+                    if (lanes[i-1] != undefined) {
+                      lanes[i-1].destroyed();
+                    }
                   }
                   hand[hand.indexOf(this)] = undefined;
                   discard.push(this);
@@ -639,10 +655,14 @@ class Card {
                     anim('edamage' + affected);
                   }
                   for (let i of affected) {
-                    elanes[i-1].hitted();
+                    if (elanes[i-1] != undefined) {
+                      elanes[i-1].hitted();
+                    }
                   }
                   for (let i of blockers) {
-                    elanes[i-1].blocked();
+                    if (elanes[i-1] != undefined) {
+                      elanes[i-1].blocked();
+                    }
                   }
                   affected = '';
                   for (let i = 0; i < 3; i++) {
@@ -656,7 +676,9 @@ class Card {
                     anim('edeath' + affected);
                   }
                   for (let i of affected) {
-                    elanes[i-1].destroyed();
+                    if (elanes[i-1] != undefined) {
+                      elanes[i-1].destroyed();
+                    }
                   }
                   hand[hand.indexOf(this)] = undefined;
                   discard.push(this);
@@ -813,10 +835,14 @@ class Tower {
                   anim(this.loc[0] + 'damage' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -830,7 +856,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].destroyed();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'others') {
                 affected = '';
@@ -863,10 +891,14 @@ class Tower {
                   anim(this.loc[0] + 'damage' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -880,7 +912,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].destroyed();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'all') {
                 affected = '';
@@ -901,10 +935,14 @@ class Tower {
                   anim(this.loc[0] + 'damage' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -918,7 +956,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].destroyed();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].destroyed();
+                  }
                 }
               }
             } else if (this.loc[0] == 'e') {
@@ -940,10 +980,14 @@ class Tower {
                   anim(this.loc[0] + 'damage' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].hitted();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  lanes[i-1].blocked();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -957,7 +1001,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].destroyed();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'others') {
                 affected = '';
@@ -990,10 +1036,14 @@ class Tower {
                   anim(this.loc[0] + 'damage' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].hitted();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  lanes[i-1].blocked();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1007,7 +1057,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].destroyed();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'all') {
                 affected = '';
@@ -1027,10 +1079,14 @@ class Tower {
                   anim(this.loc[0] + 'damage' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].hitted();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  lanes[i-1].blocked();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1044,7 +1100,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].destroyed();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].destroyed();
+                  }
                 }
               }
             }
@@ -1216,10 +1274,14 @@ class Tower {
                   anim(this.loc[0] + 'damage' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1233,7 +1295,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].destroyed();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].destroyed();
+                  }
                 }
                 break;
             }
@@ -1262,10 +1326,14 @@ class Tower {
             anim('pdamage' + affected);
           }
           for (let i of affected) {
-            lanes[i-1].hitted();
+            if (lanes[i-1] != undefined) {
+              lanes[i-1].hitted();
+            }
           }
           for (let i of blockers) {
-            lanes[i-1].blocked();
+            if (lanes[i-1] != undefined) {
+              lanes[i-1].blocked();
+            }
           }
           affected = '';
           for (let i = 0; i < 3; i++) {
@@ -1279,7 +1347,9 @@ class Tower {
             anim(this.loc[0] + 'death' + affected);
           }
           for (let i of affected) {
-            lanes[i-1].destroyed();
+            if (lanes[i-1] != undefined) {
+              lanes[i-1].destroyed();
+            }
           }
         }
       }
@@ -1308,10 +1378,14 @@ class Tower {
                 }
                 lanes[lanes.indexOf(this)] = undefined;
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1325,7 +1399,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].destroyed();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'others') {
                 affected = '';
@@ -1359,10 +1435,14 @@ class Tower {
                 }
                 lanes[lanes.indexOf(this)] = undefined;
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1376,7 +1456,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].destroyed();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'all') {
                 affected = '';
@@ -1398,10 +1480,14 @@ class Tower {
                 }
                 lanes[lanes.indexOf(this)] = undefined;
                 for (let i of affected) {
-                  elanes[i-1].hitted();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  elanes[i-1].blocked();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1415,7 +1501,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  elanes[i-1].destroyed();
+                  if (elanes[i-1] != undefined) {
+                    elanes[i-1].destroyed();
+                  }
                 }
               }
             } else if (this.loc[0] == 'e') {
@@ -1438,10 +1526,14 @@ class Tower {
                 }
                 elanes[elanes.indexOf(this)] = undefined;
                 for (let i of affected) {
-                  lanes[i-1].hitted();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  lanes[i-1].blocked();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1455,7 +1547,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].destroyed();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'others') {
                 affected = '';
@@ -1489,10 +1583,14 @@ class Tower {
                 }
                 elanes[elanes.indexOf(this)] = undefined;
                 for (let i of affected) {
-                  lanes[i-1].hitted();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  lanes[i-1].blocked();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1506,7 +1604,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].destroyed();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].destroyed();
+                  }
                 }
               } else if (this.htwo == 'all') {
                 affected = '';
@@ -1527,10 +1627,14 @@ class Tower {
                 }
                 elanes[elanes.indexOf(this)] = undefined;
                 for (let i of affected) {
-                  lanes[i-1].hitted();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].hitted();
+                  }
                 }
                 for (let i of blockers) {
-                  lanes[i-1].blocked();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].blocked();
+                  }
                 }
                 affected = '';
                 for (let i = 0; i < 3; i++) {
@@ -1544,7 +1648,9 @@ class Tower {
                   anim(this.loc[0] + 'death' + affected);
                 }
                 for (let i of affected) {
-                  lanes[i-1].destroyed();
+                  if (lanes[i-1] != undefined) {
+                    lanes[i-1].destroyed();
+                  }
                 }
               }
             }
