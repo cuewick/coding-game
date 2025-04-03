@@ -31,7 +31,7 @@ const descriptions = {
     Circulate: "Temporarily remove this card and put all other cards in your hand back into your draw pile. Then, draw 3 new cards.",
     Conjure: "Gain 1 mana.",
     Recall: "Move a random card from your discard pile back into your hand.",
-    Cloud: "Has 50 HP. 50% chance to dodge incoming attacks.\nOn Destroy: This tower comes back to your discard pile.",
+    Cloud: "Has 50 HP. 50% chance to dodge incoming attacks.\nOn Destroy: This tower comes back to your draw pile.",
     Windmill: "Has 50 HP.\nOn Hit: Gain 1 mana.",
     // EARTH CARDS
     Volley: "Deal 10 physical damage to all lanes.",

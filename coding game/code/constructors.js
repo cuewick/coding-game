@@ -1787,11 +1787,11 @@ class Tower {
           case 'special':
             switch (this.name) {
               case 'Cloud':
-                discard.push(new Card('tower', 'Cloud', 2, 'Common', undefined, undefined, undefined, 'player', false));
+                new Card('tower', 'Cloud', 2, 'Common', undefined, undefined, undefined, 'player', false);
                 lanes[lanes.indexOf(this)] = undefined;
                 break;
               case 'Archer Tower':
-                draw.push(new Card('damage', 'Volley', 2, 'Common', 10, 3, 'p', 'player', true));
+                new Card('damage', 'Volley', 2, 'Common', 10, 3, 'p', 'player', true);
                 lanes[lanes.indexOf(this)] = undefined;
                 break;
               case 'Ancient Temple':
